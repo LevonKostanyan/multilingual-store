@@ -1,0 +1,18 @@
+{
+  "products": "Ապրանքներ",
+  "addProduct": "Ավելացնել Ապրանք",
+  "cart": "Զամբյուղ",
+  "name": "Անուն",
+  "description": "Նկարագրություն",
+  "price": "Գին",
+  "quantity": "Քանակ",
+  "addToCart": "Ավելացնել Զամբյուղում",
+  "remove": "Հեռացնել",
+  "confirmSale": "Հաստատել Վաճառքը",
+  "outOfStock": "Առկա չէ",
+  "language": "Լեզու",
+  "search": "որոնել",
+  "sortBy": "տեսակավորել ըստ",
+  "cartIsEmpty": "զամբյուղը դատարկ է",
+  "removeOne": "հեռացնել մեկը"
+}

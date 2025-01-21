@@ -1,0 +1,18 @@
+{
+  "products": "Товары",
+  "addProduct": "Добавить Товар",
+  "cart": "Корзина",
+  "name": "Название",
+  "description": "Описание",
+  "price": "Цена",
+  "quantity": "Количество",
+  "addToCart": "Добавить в Корзину",
+  "remove": "Удалить",
+  "confirmSale": "Подтвердить Продажу",
+  "outOfStock": "Нет в Наличии",
+  "language": "Язык",
+  "search": "искать",
+  "sortBy": "сортировать по",
+  "cartIsEmpty": "корзина пуста",
+  "removeOne": "удалить один"
+}

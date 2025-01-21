@@ -1,0 +1,18 @@
+{
+  "products": "Products",
+  "addProduct": "Add Product",
+  "cart": "Cart",
+  "name": "Name",
+  "description": "Description",
+  "price": "Price",
+  "quantity": "Quantity",
+  "addToCart": "Add to Cart",
+  "remove": "Remove",
+  "confirmSale": "Confirm Sale",
+  "outOfStock": "Out of Stock",
+  "language": "Language",
+  "search": "search",
+  "sortBy": "sort by",
+  "cartIsEmpty": "cart is empty",
+  "removeOne": "remove one"
+}
