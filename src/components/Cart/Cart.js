@@ -4,21 +4,24 @@ import './Cart.css';
 
 const Cart = ({cart, removeFromCart, confirmSale, setCart, isRenderedRef}) => {
     const {t} = useTranslation();
+
     const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+
     useEffect(() => {
+        if (!isRenderedRef.current) {
+            const savedProducts = JSON.parse(localStorage.getItem('cart')) || [];
+
+            localStorage.setItem('cart', JSON.stringify(savedProducts));
+            setCart(savedProducts);
+        }
+
         if (isRenderedRef.current) {
             localStorage.setItem('cart', JSON.stringify(cart));
         }
-        isRenderedRef.current = true;
-    }, [cart, isRenderedRef]);
 
-    useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
-        if (savedCart) {
-            setCart(savedCart);
-        }
-    }, [setCart]);
+        isRenderedRef.current = true;
+    }, [cart]);
 
     return (
         <div className="cart-container">

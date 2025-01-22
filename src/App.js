@@ -9,12 +9,15 @@ import SearchBar from './components/SearchBar/SearchBar';
 import SortBar from './components/SortBar/SortBar';
 import './App.css';
 
+
+const defaultItems = [
+    {id: 1, name: "Product 1", description: "Description 1", price: 10, quantity: 5},
+    {id: 2, name: "Product 2", description: "Description 2", price: 20, quantity: 3}
+]
+
 const App = () => {
     const {t} = useTranslation();
-    const [products, setProducts] = useState([
-        {id: 1, name: "Product 1", description: "Description 1", price: 10, quantity: 5},
-        {id: 2, name: "Product 2", description: "Description 2", price: 20, quantity: 3}
-    ]);
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [sortOption, setSortOption] = useState('name');
@@ -54,7 +57,6 @@ const App = () => {
         }
     };
 
-
     const removeFromCart = (product) => {
         const existingProduct = cart.find((item) => item.id === product.id);
         if (existingProduct) {
@@ -78,7 +80,6 @@ const App = () => {
         }
     };
 
-
     const deleteProduct = (id) => {
         setProducts(products.filter((product) => product.id !== id));
         setCart(cart.filter((item) => item.id !== id));
@@ -99,19 +100,28 @@ const App = () => {
             return a.name.localeCompare(b.name);
         });
 
+
     useEffect(() => {
+        if (!isRenderedRef.current) {
+            const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+            if (savedProducts.length === 0) {
+                localStorage.setItem('products', JSON.stringify(defaultItems));
+                setProducts(defaultItems);
+                return;
+            }
+
+            localStorage.setItem('products', JSON.stringify(savedProducts));
+            setProducts(savedProducts);
+        }
+
         if (isRenderedRef.current) {
             localStorage.setItem('products', JSON.stringify(products));
         }
+
         isRenderedRef.current = true;
     }, [products]);
 
-    useEffect(() => {
-        const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
-        if (savedProducts) {
-            setCart(savedProducts);
-        }
-    }, []);
 
     return (
         <Router>
