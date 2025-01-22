@@ -16,13 +16,11 @@ const App = () => {
         {id: 2, name: "Product 2", description: "Description 2", price: 20, quantity: 3}
     ]);
     const [cart, setCart] = useState([]);
-    const [language, setLanguage] = useState("en");
     const [searchQuery, setSearchQuery] = useState('');
     const [sortOption, setSortOption] = useState('name');
     const isRenderedRef = useRef(false);
 
     const changeLanguage = (lng) => {
-        setLanguage(lng);
         i18n.changeLanguage(lng);
     };
 
@@ -103,15 +101,15 @@ const App = () => {
 
     useEffect(() => {
         if (isRenderedRef.current) {
-            localStorage.setItem('cart', JSON.stringify(cart));
+            localStorage.setItem('products', JSON.stringify(products));
         }
         isRenderedRef.current = true;
-    }, [cart]);
+    }, [products]);
 
     useEffect(() => {
-        const savedCart = JSON.parse(localStorage.getItem('cart'));
-        if (savedCart) {
-            setCart(savedCart);
+        const savedProducts = JSON.parse(localStorage.getItem('products')) || [];
+        if (savedProducts) {
+            setCart(savedProducts);
         }
     }, []);
 
@@ -151,6 +149,8 @@ const App = () => {
                         element={
                             <Cart
                                 cart={cart}
+                                setCart={setCart}
+                                isRenderedRef={isRenderedRef}
                                 removeFromCart={removeFromCart}
                                 confirmSale={confirmSale}
                             />
